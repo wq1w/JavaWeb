@@ -29,7 +29,7 @@ public class JdbcUtil {
         /*
          * 获取URL
          */
-        URL = "jdbc:mysql://localhost:3306/javaweb_books_management_system?useUnicode=true&characterEncoding=utf8&useSSL=false";
+        URL = "jdbc:mysql://localhost:3306/bookms?useUnicode=true&characterEncoding=utf8&useSSL=false";
         /*
          * 获取用户名
          */
@@ -37,7 +37,7 @@ public class JdbcUtil {
         /*
          * 获取密码
          */
-        password = "123456";
+        password = "hf238529";
         /*
          * 设置是否自动提交，一般为false不用改
          */
@@ -160,7 +160,7 @@ public class JdbcUtil {
     }
 
 
-    public static ResultSet query(String SQL, Object... params) {
+    public static ResultSet  query(String SQL, Object... params) {
 
         if (SQL == null || SQL.trim().isEmpty() || !SQL.trim().toLowerCase().startsWith("select")) {
             throw new RuntimeException("你的SQL语句为空或不是查询语句");

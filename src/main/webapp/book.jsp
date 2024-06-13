@@ -6,6 +6,11 @@
 <html lang="zh-CN">
 <head>
     <title>Books Page</title>
+    <script type="text/javascript">
+        function showError(message) {
+            alert(message);
+        }
+    </script>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/public.css">
@@ -14,8 +19,20 @@
             padding: 20px 20px 0;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+<script type="text/javascript">
+    showError("<%= errorMessage %>");
+</script>
+<%
+    }
+%>
 <%
     // public
     String username = (String) request.getSession().getAttribute("username");
@@ -103,5 +120,26 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">提示</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 这里将会显示借阅成功或失败的信息 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
