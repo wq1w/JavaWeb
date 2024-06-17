@@ -29,7 +29,7 @@ public class JdbcUtil {
         /*
          * 获取URL
          */
-        URL = "jdbc:mysql://localhost:3306/javaweb_books_management_system?useUnicode=true&characterEncoding=utf8&useSSL=false";
+        URL = "jdbc:mysql://localhost:3306/bookms?useUnicode=true&characterEncoding=utf8&useSSL=false";
         /*
          * 获取用户名
          */
