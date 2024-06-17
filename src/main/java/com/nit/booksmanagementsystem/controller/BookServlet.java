@@ -48,7 +48,8 @@ public class BookServlet extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 // 借阅
                 if (bookService.selectOne(id).getIsBorrowed()) {
-                    throw new RuntimeException("借阅失败");
+                    String errorMessage = "该图书已经被借阅！";
+                    request.setAttribute("errorMessage", errorMessage);
                 }
                 bookService.bookBorrow(id, true);
                 // 插入借阅记录
@@ -65,7 +66,8 @@ public class BookServlet extends HttpServlet {
                 int returnId = Integer.parseInt(request.getParameter("id"));
                 // 借阅
                 if (!bookService.selectOne(returnId).getIsBorrowed()) {
-                    throw new RuntimeException("归还失败");
+                    String errorMessage = "该图书已经被归还！";
+                    request.setAttribute("errorMessage", errorMessage);
                 }
                 bookService.bookBorrow(returnId, false);
                 // 插入借阅记录
