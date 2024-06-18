@@ -52,9 +52,11 @@ public class UserServlet extends HttpServlet {
                         request.getParameter("password"),
                         request.getParameter("phone"));
                 if (result.getCode() != 200) {
-                    throw new RuntimeException("重复用户名，添加失败");
+                    String errorMessage = "该用户名已存在！";
+                    request.setAttribute("errorMessage", errorMessage);
+                }else {
+                    request.setAttribute("data", result);
                 }
-                request.setAttribute("data", result);
                 request.getRequestDispatcher("/router?page=admin_add_user").forward(request, response);
                 break;
         }

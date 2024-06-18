@@ -50,15 +50,16 @@ public class BookServlet extends HttpServlet {
                 if (bookService.selectOne(id).getIsBorrowed()) {
                     String errorMessage = "该图书已经被借阅！";
                     request.setAttribute("errorMessage", errorMessage);
+                }else {
+                    bookService.bookBorrow(id, true);
+                    // 插入借阅记录
+                    Borrowing borrowing = new Borrowing();
+                    borrowing.setUserId(CommonUtil.getUserId());
+                    borrowing.setBookId(id);
+                    borrowing.setType("borrowing");
+                    borrowing.setDatetime(new Timestamp(new Date().getTime()));
+                    borrowingService.insertOne(borrowing);
                 }
-                bookService.bookBorrow(id, true);
-                // 插入借阅记录
-                Borrowing borrowing = new Borrowing();
-                borrowing.setUserId(CommonUtil.getUserId());
-                borrowing.setBookId(id);
-                borrowing.setType("borrowing");
-                borrowing.setDatetime(new Timestamp(new Date().getTime()));
-                borrowingService.insertOne(borrowing);
                 // 跳转
                 request.getRequestDispatcher("/router?page=book").forward(request, response);
                 break;
@@ -68,15 +69,16 @@ public class BookServlet extends HttpServlet {
                 if (!bookService.selectOne(returnId).getIsBorrowed()) {
                     String errorMessage = "该图书已经被归还！";
                     request.setAttribute("errorMessage", errorMessage);
+                }else {
+                    bookService.bookBorrow(returnId, false);
+                    // 插入借阅记录
+                    Borrowing borrowing = new Borrowing();
+                    borrowing.setUserId(CommonUtil.getUserId());
+                    borrowing.setBookId(returnId);
+                    borrowing.setType("returning");
+                    borrowing.setDatetime(new Timestamp(new Date().getTime()));
+                    borrowingService.insertOne(borrowing);
                 }
-                bookService.bookBorrow(returnId, false);
-                // 插入借阅记录
-                borrowing = new Borrowing();
-                borrowing.setUserId(CommonUtil.getUserId());
-                borrowing.setBookId(returnId);
-                borrowing.setType("returning");
-                borrowing.setDatetime(new Timestamp(new Date().getTime()));
-                borrowingService.insertOne(borrowing);
                 // 跳转
                 request.getRequestDispatcher("/router?page=book").forward(request, response);
                 break;

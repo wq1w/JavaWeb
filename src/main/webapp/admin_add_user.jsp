@@ -10,6 +10,11 @@
 <html lang="zh-CN">
 <head>
     <title>Add User Page</title>
+    <script type="text/javascript">
+        function showError(message) {
+            alert(message);
+        }
+    </script>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/public.css">
@@ -20,6 +25,16 @@
     </style>
 </head>
 <body>
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+<script type="text/javascript">
+    showError("<%= errorMessage %>");
+</script>
+<%
+    }
+%>
 <%
     // public
     String username = (String) request.getSession().getAttribute("username");
