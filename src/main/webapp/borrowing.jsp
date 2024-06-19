@@ -3,7 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.nit.booksmanagementsystem.entity.Book" %>
 <%@ page import="com.nit.booksmanagementsystem.vo.BorrowingVo" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN">
 <head>
@@ -12,8 +11,116 @@
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/public.css">
     <style>
+        :root {
+            --primary: #0F63BBFF;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --radius: 10px;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .top-nav {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .top-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-nav p {
+            margin: 0;
+        }
+
+        .non-top-nav {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: var(--light);
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .sidebar-ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            display: block;
+            padding: 10px;
+            border-radius: var(--radius);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-ul li a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
         .borrowings-page {
-            padding: 20px 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .books-table {
+            overflow-x: auto;
+        }
+
+        .books-table table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .books-table th, .books-table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .books-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .books-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .books-table tr:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -49,14 +156,14 @@
         <div class="main">
             <div class="borrowings-page">
                 <div class="books-table">
-                    <table class="table table-striped table-bordered table-hover" style="margin: 0 auto">
+                    <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
-                            <td>记录id</td>
-                            <td>用户名</td>
-                            <td>图书名称</td>
-                            <td>类别</td>
-                            <td>时间</td>
+                            <th>记录id</th>
+                            <th>用户名</th>
+                            <th>图书名称</th>
+                            <th>类别</th>
+                            <th>时间</th>
                         </tr>
                         </thead>
                         <tbody>
