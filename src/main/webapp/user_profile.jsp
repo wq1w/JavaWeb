@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.nit.booksmanagementsystem.utils.CommonUtil" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.nit.booksmanagementsystem.vo.BorrowingVo" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN">

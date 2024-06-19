@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 /**
- * 登录过滤器
+ * EncodingFilter 作用是设置请求和响应的编码格式为 UTF-8
  */
 @WebFilter(urlPatterns = {"/*", "*.jsp"})
 public class EncodingFilter implements Filter {
