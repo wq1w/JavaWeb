@@ -174,6 +174,7 @@
                             <label for="input-phone">手机号</label>
                             <input type="text" name="phone" class="form-control col-3" placeholder="手机号" id="input-phone"/>
                         </div>
+
                         <input type="submit" value="添加" class="btn btn-primary">
                     </form>
                 </div>
