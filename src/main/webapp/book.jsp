@@ -56,9 +56,7 @@
     <div class="non-top-nav">
         <div class="sidebar">
             <ul class="sidebar-ul">
-<%--                <li><a href="/login?method=login-page">图书查询</a></li>--%>
-<%--                <li><a href="#">图书查询</a></li>--%>
-<%--                <li><a href="#">图书查询</a></li>--%>
+
                 <c:forEach var="item" items="<%=permissions%>">
                     <li><a href="${item[1]}">${item[0]}</a></li>
                 </c:forEach>
