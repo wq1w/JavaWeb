@@ -2,7 +2,7 @@
 <%@ page import="com.nit.booksmanagementsystem.utils.CommonUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.nit.booksmanagementsystem.entity.Book" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="zh-CN">
 <head>
     <title>Books Page</title>
@@ -256,7 +256,6 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -267,7 +266,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- 这里将会显示借阅成功或失败的信息 -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>

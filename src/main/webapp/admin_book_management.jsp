@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.nit.booksmanagementsystem.utils.CommonUtil" %>
 <%@ page import="com.nit.booksmanagementsystem.entity.Book" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="zh-CN">
 <head>
     <title>Books Page</title>

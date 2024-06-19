@@ -9,11 +9,6 @@ import java.util.List;
 
 public class BookBookTypeDao {
 
-    public List<BookBookType> selectType() {
-        String sql = "select * from book_book_type";
-        return resultSetToBookBookTypeList(JdbcUtil.query(sql));
-    }
-
     public List<BookBookType> resultSetToBookBookTypeList(ResultSet resultSet) {
         try {
             List<BookBookType> bookBookTypes = new ArrayList<>();
@@ -42,13 +37,4 @@ public class BookBookTypeDao {
         JdbcUtil.insert(sql, true, bookBookType.getBookId(), bookBookType.getBookTypeId());
     }
 
-    public void deleteOne(int id) {
-        String sql = "delete from `book_book_type` where id = ?";
-        JdbcUtil.execute(sql, id);
-    }
-
-    public void updateOne(BookBookType bookBookType) {
-        String sql = "update `book_book_type` set book_id= ?, book_type_id = ? WHERE id = ?";
-        JdbcUtil.execute(sql, bookBookType.getBookId(), bookBookType.getBookTypeId(), bookBookType.getId());
-    }
 }

@@ -121,13 +121,8 @@ public class UserService {
      * 更新用户信息
      *
      * @param user 要更新的用户对象
-     * @throws RuntimeException 如果用户名已经存在,抛出异常
      */
     public void updateOne(User user) {
-        // 检查用户名是否已经存在
-        if (selectByUsername(user.getUsername()) != null) {
-            throw new RuntimeException("重复用户名，修改失败");
-        }
         // 更新用户信息
         userDao.updateOne(user);
     }

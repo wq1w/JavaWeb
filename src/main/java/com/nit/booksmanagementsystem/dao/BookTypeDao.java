@@ -35,12 +35,6 @@ public class BookTypeDao {
         return (bookTypes.size() > 0) ? bookTypes.get(0) : null;
     }
 
-    public BookType selectByName(String name) {
-        String sql = "select * from book_type where name = ?";
-        List<BookType> bookTypes = resultSetToBookTypeList(JdbcUtil.query(sql, name));
-        return (bookTypes.size() > 0) ? bookTypes.get(0) : null;
-    }
-
     public void insertOne(BookType bookType) {
         String sql = "INSERT INTO `book_type` (name) VALUES (?)";
         JdbcUtil.insert(sql, true, bookType.getName());

@@ -1,10 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.nit.booksmanagementsystem.vo.BorrowingVo" %>
 <%@ page import="com.nit.booksmanagementsystem.utils.CommonUtil" %>
-<%@ page import="com.nit.booksmanagementsystem.entity.Book" %>
-<%@ page import="com.nit.booksmanagementsystem.entity.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="zh-CN">
 <head>
     <title>Add Book Page</title>

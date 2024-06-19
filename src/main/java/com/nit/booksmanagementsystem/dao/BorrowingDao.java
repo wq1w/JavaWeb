@@ -15,26 +15,6 @@ public class BorrowingDao {
         JdbcUtil.insert(sql, true, borrowing.getUserId(), borrowing.getBookId(), borrowing.getType(), borrowing.getDatetime());
     }
 
-    public List<Borrowing> selectAll() {
-        String sql = "select * from borrowing";
-        ResultSet resultSet = JdbcUtil.query(sql);
-        try {
-            List<Borrowing> borrowings = new ArrayList<>();
-            while (resultSet.next()) {
-                Borrowing borrowing = new Borrowing();
-                borrowing.setId(resultSet.getInt(1));
-                borrowing.setUserId(resultSet.getInt(2));
-                borrowing.setUserId(resultSet.getInt(3));
-                borrowing.setType(resultSet.getString(4));
-                borrowing.setDatetime(resultSet.getTimestamp(5));
-                borrowings.add(borrowing);
-            }
-            return borrowings;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<BorrowingVo> selectVoAll() {
         String sql = "select borrowing.id, username, `name` book_name, type, `datetime` from borrowing, `user`, book where borrowing.book_id = book.id and borrowing.user_id = `user`.id;";
         ResultSet resultSet = JdbcUtil.query(sql);

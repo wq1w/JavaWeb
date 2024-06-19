@@ -18,10 +18,6 @@ public class BorrowingService {
         return borrowingDao.selectVoAll();
     }
 
-    public List<BorrowingVo> selectVoByUserId(int id) {
-        return borrowingDao.selectVoByUserId(id);
-    }
-
     public List<BorrowingVo> selectVoByCurrentUser() {
         return borrowingDao.selectVoByUserId(CommonUtil.getUserId());
     }

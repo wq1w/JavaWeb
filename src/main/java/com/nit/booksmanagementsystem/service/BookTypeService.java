@@ -16,10 +16,6 @@ public class BookTypeService {
         return bookTypeDao.selectOne(id);
     }
 
-    public BookType selectByName(String selectByName) {
-        return bookTypeDao.selectByName(selectByName);
-    }
-
     public void insertOne(BookType bookType) {
         bookTypeDao.insertOne(bookType);
     }
