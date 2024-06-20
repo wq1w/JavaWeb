@@ -39,7 +39,7 @@ public class JdbcUtil {
         /*
          * 获取密码
          */
-        password = "123456";
+        password = "hf238529";
         /*
          * 设置是否自动提交，一般为false不用改
          */
