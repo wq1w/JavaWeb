@@ -146,11 +146,16 @@
 </head>
 <body>
 <%
-    // public
+    // 从会话中获取用户名
     String username = (String) request.getSession().getAttribute("username");
+
+    // 获取当前用户的身份
     String identity = CommonUtil.getIdentity();
+
+    // 从请求属性中获取当前用户的权限列表
     List<String[]> permissions = (List<String[]>) request.getAttribute("permissions");
-    // private
+
+    // 从请求属性中获取图书类型列表
     List<BookType> types = (List<BookType>) request.getAttribute("types");
 %>
 <div class="container-fluid">
@@ -160,16 +165,23 @@
                 <p>图书管理系统</p>
             </div>
             <div class="right-box">
-                <p class="top-nav-username" style="margin-right: 10px">用户：<%=username%></p>
-                <p class="top-nav-identity">类型：<%=identity.equals("user") ? "用户" : "管理员"%></p>
+                <p class="top-nav-username" style="margin-right: 10px">用户：<%=username%>
+                </p>
+                <p class="top-nav-identity">类型：<%=identity.equals("user") ? "用户" : "管理员"%>
+                </p>
             </div>
         </div>
     </div>
     <div class="non-top-nav">
         <div class="sidebar">
+            <!-- 侧边栏菜单 -->
             <ul class="sidebar-ul">
+                <!-- 遍历权限列表,为每个权限生成一个菜单项 -->
                 <c:forEach var="item" items="<%=permissions%>">
-                    <li><a href="${item[1]}">${item[0]}</a></li>
+                    <li>
+                        <!-- 每个菜单项包含一个链接,链接地址从权限列表中获取 -->
+                        <a href="${item[1]}">${item[0]}</a>
+                    </li>
                 </c:forEach>
             </ul>
         </div>
@@ -177,9 +189,14 @@
             <div class="main-container">
                 <div class="query-box">
                     <form action="/bookType" class="query-form clearfix">
+                        <!-- 隐藏的输入字段,用于指定请求方法为 condition -->
+                        <input type="hidden" name="method" value="condition">
+
                         <div class="form-group row" style="margin: 0">
-                            <input type="hidden" name="method" value="condition">
-                            <input type="text" name="name" class="form-control col-3" placeholder="类别名"/>
+                            <!-- 类别名输入框 -->
+                            <input type="text" name="name" class="form-control col-3" placeholder="类别名">
+
+                            <!-- 查询提交按钮 -->
                             <input type="submit" value="查询" class="btn btn-primary col-1 offset-1">
                         </div>
                     </form>
@@ -199,9 +216,12 @@
                                 <td>${type.id}</td>
                                 <td>${type.name}</td>
                                 <td>
+                                    <!-- 删除图书类型链接 -->
                                     <a href="/bookType?method=delete&id=${type.id}">
                                         <button class="btn btn-danger btn-sm">删除</button>
                                     </a>
+
+                                    <!-- 修改图书类型链接 -->
                                     <a href="/router?page=admin_book_type_update&id=${type.id}">
                                         <button class="btn btn-primary btn-sm">修改</button>
                                     </a>
