@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/public.css">
     <style>
+        /* 在这里定义了一些全局CSS变量 */
         :root {
             --primary: #0F63BBFF;
             --secondary: #6c757d;
@@ -22,6 +23,7 @@
             --radius: 10px;
         }
 
+        /* 设置了网页的基本样式 */
         body {
             background: #f0f2f5;
             font-family: 'Arial', sans-serif;
@@ -31,6 +33,7 @@
             padding: 0;
         }
 
+        /* 定义了顶部导航栏的样式 */
         .top-nav {
             background-color: var(--primary);
             color: white;
@@ -47,6 +50,7 @@
             margin: 0;
         }
 
+        /* 定义了页面主体部分的样式 */
         .non-top-nav {
             display: flex;
         }
@@ -86,6 +90,7 @@
             padding: 20px;
         }
 
+        /* 定义了"借阅记录"页面的样式 */
         .borrowings-page {
             padding: 20px;
             background-color: white;
@@ -125,11 +130,13 @@
 </head>
 <body>
 <%
-    // public
+    // 从会话中获取用户名
     String username = (String) request.getSession().getAttribute("username");
+    // 获取用户的身份
     String identity = CommonUtil.getIdentity();
+    // 获取用户的权限列表
     List<String[]> permissions = (List<String[]>) request.getAttribute("permissions");
-    // private
+    // 获取借阅记录列表
     List<BorrowingVo> borrowings = (List<BorrowingVo>) request.getAttribute("borrowings");
 %>
 <div class="container-fluid">
