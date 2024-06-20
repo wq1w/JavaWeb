@@ -118,10 +118,15 @@
 <body>
 <%
     // public
+    // 从Session中获取当前登录用户的用户名
     String username = (String) request.getSession().getAttribute("username");
+    // 获取当前用户的身份
     String identity = CommonUtil.getIdentity();
+    // 从Request中获取当前用户的权限列表
     List<String[]> permissions = (List<String[]>) request.getAttribute("permissions");
+
     // private
+    // 从Request中获取当前正在操作的图书类别
     BookType type = (BookType) request.getAttribute("type");
 %>
 <div class="container-fluid">
@@ -148,12 +153,17 @@
             <div class="main-container">
                 <div class="form-box">
                     <form action="/bookType" class="clearfix" method="post">
+                        <!-- 这个表单用于修改现有的图书类别 -->
                         <div class="form-group">
+                            <!-- 隐藏的表单字段,用于指定操作类型为"修改" -->
                             <input type="hidden" name="method" value="update">
+                            <!-- 隐藏的表单字段,用于存储当前图书类别的 ID -->
                             <input type="hidden" name="id" value="<%=type.getId()%>">
                             <label for="input-username">类别名</label>
+                            <!-- 显示当前图书类别名称的输入框 -->
                             <input type="text" name="name" class="form-control col-3" placeholder="类别名" id="input-username" value="<%=type.getName()%>"/>
                         </div>
+                        <!-- 提交表单的按钮 -->
                         <input type="submit" value="修改" class="btn btn-primary">
                     </form>
                 </div>
