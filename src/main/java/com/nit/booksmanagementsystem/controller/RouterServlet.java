@@ -50,7 +50,7 @@ public class RouterServlet extends HttpServlet {
                 if (request.getAttribute("books") == null) {
                     request.setAttribute("books", bookService.selectAll());
                 }
-                request.getRequestDispatcher("admin_book_management.jsp").forward(request, response);
+                request.getRequestDispatcher("book.jsp").forward(request, response);
                 break;
             case "borrowing":
                 // 根据用户身份(admin或当前用户)获取所有借阅信息,并设置到请求属性中

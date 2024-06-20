@@ -41,7 +41,7 @@ public class BookServlet extends HttpServlet {
                 book.setName(name);
 
                 request.setAttribute("books", bookService.selectCondition(book));
-                request.getRequestDispatcher("/router?page=book").forward(request, response);
+                request.getRequestDispatcher("/router?page=admin_book_management").forward(request, response);
                 break;
 
             case "borrow":
