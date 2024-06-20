@@ -5,7 +5,22 @@
 <html lang="zh-CN">
 <head>
     <title>Add User Page</title>
-    <script type="text/javascript">
+    <script>
+        function validateForm() {
+            // 获取表单元素
+            var username = document.forms["userForm"]["username"].value;
+            var password = document.forms["userForm"]["password"].value;
+            var phone = document.forms["userForm"]["phone"].value;
+
+            // 检查是否有任一数据为空
+            if (username.trim() === "" || password.trim() === "" || phone.trim() === "") {
+                alert("所有字段都是必填的。");
+                return false;
+            }
+
+            return true;
+        }
+
         function showError(message) {
             alert(message);
         }
@@ -159,7 +174,7 @@
         <div class="main">
             <div class="main-container">
                 <div class="form-box">
-                    <form action="/user" class="clearfix" method="post">
+                    <form name="userForm" action="/user" class="clearfix" method="post" onsubmit="return validateForm()">
                         <div class="form-group">
                             <input type="hidden" name="method" value="add">
                             <input type="hidden" name="id">

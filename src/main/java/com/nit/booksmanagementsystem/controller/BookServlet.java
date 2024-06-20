@@ -90,6 +90,7 @@ public class BookServlet extends HttpServlet {
                 book.setIsbn(request.getParameter("isbn"));
                 book.setInfo(request.getParameter("info"));
                 book.setPricing(Double.parseDouble(request.getParameter("pricing")));
+
                 book.setIsBorrowed(request.getParameter("is_borrowed").equals("是"));
 
                 bookService.insertOne(book);

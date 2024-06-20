@@ -37,9 +37,7 @@ public class UserServlet extends HttpServlet {
                 user.setUsername(request.getParameter("username"));
                 user.setPassword(request.getParameter("password"));
                 user.setPhone(request.getParameter("phone"));
-
                 userService.updateOne(user);
-
                 request.getRequestDispatcher("/router?page=admin_user_management").forward(request, response);
                 break;
             case "condition":

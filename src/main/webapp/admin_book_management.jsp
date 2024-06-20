@@ -6,6 +6,12 @@
 <html lang="zh-CN">
 <head>
     <title>Books Page</title>
+    <script>
+        function showError(message) {
+            alert(message);
+        }
+    </script>
+
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/public.css">
@@ -144,6 +150,16 @@
     </style>
 </head>
 <body>
+<%
+    String message = (String) request.getAttribute("message");
+    if (message != null) {
+%>
+<script type="text/javascript">
+    showError("<%= message %>");
+</script>
+<%
+    }
+%>
 <%
     // public
     String username = (String) request.getSession().getAttribute("username");

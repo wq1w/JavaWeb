@@ -5,6 +5,33 @@
 <html lang="zh-CN">
 <head>
     <title>Add Book Page</title>
+    <script>
+        function validateForm() {
+            // 获取表单元素
+            var name = document.forms["bookForm"]["name"].value;
+            var author = document.forms["bookForm"]["author"].value;
+            var publisher = document.forms["bookForm"]["publisher"].value;
+            var isbn = document.forms["bookForm"]["isbn"].value;
+            var info = document.forms["bookForm"]["info"].value;
+            var pricing = document.forms["bookForm"]["pricing"].value;
+            var isBorrowed = document.forms["bookForm"]["is_borrowed"].value;
+
+            // 检查是否有任一数据为空
+            if (name.trim() === "" || author.trim() === "" || publisher.trim() === "" ||
+                isbn.trim() === "" || info.trim() === "" || pricing.trim() === "" || isBorrowed.trim() === "") {
+                alert("所有字段都是必填的。");
+                return false;
+            }
+
+            // 检查定价是否为有效的数字
+            if (isNaN(pricing)) {
+                alert("定价必须是一个有效的数字。");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/public.css">
@@ -158,7 +185,7 @@
         <div class="main">
             <div class="main-container">
                 <div class="form-box">
-                    <form action="/book" class="clearfix" method="post">
+                    <form name="bookForm" action="/book" class="clearfix" method="post" onsubmit="return validateForm()">
                         <div class="form-group">
                             <input type="hidden" name="method" value="add">
                             <label for="input-username">图书名称</label>
